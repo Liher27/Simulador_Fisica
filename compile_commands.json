@@ -9,17 +9,15 @@
       "-Wpedantic",
       "-Werror",
       "-pedantic-errors",
-      "-g",
-      "-fdiagnostics-color=always",
       "-I",
-      "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/header",
+      "header",
       "-o",
-      "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/compiled/MiProyecto",
-      "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/src/funciones.cpp"
+      "compiled/MiProyecto",
+      "src/controller/manager.cpp"
     ],
-    "directory": "/home/liher27/proyectos-c++/pruebasIncludesYFunciones",
-    "file": "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/src/funciones.cpp",
-    "output": "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/compiled/MiProyecto"
+    "directory": "/home/liher27/proyectos-c++/simulador_fisica",
+    "file": "/home/liher27/proyectos-c++/simulador_fisica/src/controller/manager.cpp",
+    "output": "/home/liher27/proyectos-c++/simulador_fisica/compiled/MiProyecto"
   },
   {
     "arguments": [
@@ -31,16 +29,54 @@
       "-Wpedantic",
       "-Werror",
       "-pedantic-errors",
-      "-g",
-      "-fdiagnostics-color=always",
       "-I",
-      "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/header",
+      "header",
       "-o",
-      "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/compiled/MiProyecto",
-      "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/src/funcionExterna.cpp"
+      "compiled/MiProyecto",
+      "src/logic/calculos.cpp"
     ],
-    "directory": "/home/liher27/proyectos-c++/pruebasIncludesYFunciones",
-    "file": "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/src/funcionExterna.cpp",
-    "output": "/home/liher27/proyectos-c++/pruebasIncludesYFunciones/compiled/MiProyecto"
+    "directory": "/home/liher27/proyectos-c++/simulador_fisica",
+    "file": "/home/liher27/proyectos-c++/simulador_fisica/src/logic/calculos.cpp",
+    "output": "/home/liher27/proyectos-c++/simulador_fisica/compiled/MiProyecto"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-std=c++23",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "-pedantic-errors",
+      "-I",
+      "header",
+      "-o",
+      "compiled/MiProyecto",
+      "src/logic/dialogos.cpp"
+    ],
+    "directory": "/home/liher27/proyectos-c++/simulador_fisica",
+    "file": "/home/liher27/proyectos-c++/simulador_fisica/src/logic/dialogos.cpp",
+    "output": "/home/liher27/proyectos-c++/simulador_fisica/compiled/MiProyecto"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-std=c++23",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "-pedantic-errors",
+      "-I",
+      "header",
+      "-o",
+      "compiled/MiProyecto",
+      "src/main/main.cpp"
+    ],
+    "directory": "/home/liher27/proyectos-c++/simulador_fisica",
+    "file": "/home/liher27/proyectos-c++/simulador_fisica/src/main/main.cpp",
+    "output": "/home/liher27/proyectos-c++/simulador_fisica/compiled/MiProyecto"
   }
 ]
