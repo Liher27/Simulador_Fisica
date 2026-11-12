@@ -1,15 +1,16 @@
-#ifndef CALCULOS_HEADER
-#define CALCULOS_HEADER
+#pragma once
+#include "bodies.h"
 
 namespace mathematicCalc
 {
-    double calculateGravitationalForce(double planetRadius, double objectHeight, double objectMass, double planetMass);
-    double calculateGravitationalAcceleration(double planetRadius, double objectHeight, double planetMass);
-    double calculateEscapingVelocity(double planetRadius, double objectHeight, double planetMass);
+    double calculateGravitationalForce(const bodies::Planet *planet, const bodies::Object *object);
+    double calculateGravitationalAcceleration(const bodies::Planet *planet, const bodies::Object *object);
+    double calculateEscapingVelocity(const bodies::Planet *planet, const bodies::Object *object);
+    double calculateOrbitalSpeed(const bodies::Planet *planet, const bodies::Object *object);
+    double calculateOrbitalPeriod(const bodies::Planet *planet, const bodies::Object *object);
 }
-namespace constantesNumericas
+namespace numericConstants
 {
-    
 
     constexpr double gravityConstant{6.67430e-11};
 
@@ -20,5 +21,3 @@ namespace constantesNumericas
     constexpr double jupiterRadius{6.9911e7};
 
 }
-
-#endif

@@ -1,4 +1,5 @@
 #include "dialogos.h"
+#include "calculos.h"
 #include <iostream>
 #include <limits>
 #include <cmath>
@@ -6,9 +7,8 @@
 
 namespace dialogs
 {
-    int menuDisplay()
+    void menuDisplay(int &opcion)
     {
-        int operation{};
         while (true)
         {
 
@@ -22,22 +22,23 @@ namespace dialogs
                 std::cout << literals::optionThreeSV << "\n";
                 std::cout << literals::optionFourSV << "\n";
 
-                std::cin >> operation;
+                std::cin >> opcion;
 
                 if (clearFailedExtraction())
+                {
+                    std::cout << literals::errorInputSV << "\n";
                     continue;
+                }
 
-                if (operation >= 1 && operation <= 4)
+                if (opcion >= 1 && opcion <= 4)
                     break;
 
                 std::cout << literals::errorInputSV << '\n';
             }
         }
-
-        return operation;
     }
 
-    int askForPlanet()
+    void askUserForPlanet(bodies::Planet &planet)
     {
         int operation{};
         while (true)
@@ -54,57 +55,45 @@ namespace dialogs
                 continue;
 
             if (operation >= 1 && operation <= 2)
+            {
+                double planetMass{operation == 1 ? numericConstants::earthMass : numericConstants::jupiterMass};
+                double planetRadius{operation == 1 ? numericConstants::earthRadius : numericConstants::jupiterRadius};
+
+                planet.planetMass = planetMass;
+                planet.planetRadius = planetRadius;
                 break;
+            }
 
             std::cout << literals::errorInputSV << '\n';
         }
-
-        return operation;
     }
 
-    double askForHeight()
+    double askForValidPositiveValue(std::string_view message)
     {
-        double height{};
+        double value{};
+
         while (true)
         {
+            std::cout << message;
+            std::cin >> value;
 
-            std::cout << literals::heightSelectionTitleSV;
-
-            std::cin >> height;
-            if (!clearFailedExtraction() && std::isfinite(height) && height >= 0.0)
-            {
-                break;
-            }
-
-            else
+            if (clearFailedExtraction() || !std::isfinite(value) ||
+                value < 0)
             {
                 std::cout << literals::invalidValue;
+                continue;
             }
-        }
 
-        return height;
+            return value;
+        }
     }
-
-    double askForObjectMass()
+    void askUserForObject(bodies::Object &object)
     {
-        double mass{};
-        while (true)
-        {
+        object.objectMass = askForValidPositiveValue(
+            literals::objectMassSelectionTitleSV);
 
-            std::cout << literals::objectMassSelectionTitleSV;
-
-            std::cin >> mass;
-            if (!clearFailedExtraction() && std::isfinite(mass) && mass >= 0.0)
-            {
-                break;
-            }
-            else
-            {
-                std::cout << literals::invalidValue;
-            }
-        }
-
-        return mass;
+        object.objectHeight = askForValidPositiveValue(
+            literals::heightSelectionTitleSV);
     }
 
     // returns true if extraction failed, false otherwise

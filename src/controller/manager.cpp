@@ -4,30 +4,39 @@
 
 namespace manager
 {
-    void manageCalculateGravitationalForce(int wishedPlanet)
+    void manageCalculateGravitationalForce(const bodies::Planet *planet, const bodies::Object *object)
     {
-        double objectHeight{dialogs::askForHeight()};
-        double objectMass{dialogs::askForObjectMass()};
 
-        double result {mathematicCalc::calculateGravitationalForce(wishedPlanet == 1 ? constantesNumericas::earthRadius : constantesNumericas::jupiterRadius, objectHeight, objectMass, wishedPlanet == 1 ? constantesNumericas::earthMass : constantesNumericas::jupiterMass)};
-        
+        double result{mathematicCalc::calculateGravitationalForce(planet, object)};
+
         dialogs::showResult(literals::gravitationalForceResult, result, " N.\n");
     }
 
-    void manageCalculateGravitationalAcceleration(int wishedPlanet)
+    void manageCalculateGravitationalAcceleration(const bodies::Planet *planet, const bodies::Object *object)
     {
-        double objectHeight{dialogs::askForHeight()};
-        double result {mathematicCalc::calculateGravitationalAcceleration(wishedPlanet == 1 ? constantesNumericas::earthRadius : constantesNumericas::jupiterRadius, objectHeight, wishedPlanet == 1 ? constantesNumericas::earthMass : constantesNumericas::jupiterMass)};
+        double result{mathematicCalc::calculateGravitationalAcceleration(planet, object)};
 
         dialogs::showResult(literals::gravitationalAccelerationResult, result, " m/s².\n");
     }
 
-    void manageCalculateEscapingVelocity(int wishedPlanet)
+    void manageCalculateEscapingVelocity(const bodies::Planet *planet, const bodies::Object *object)
     {
-        double objectHeight{dialogs::askForHeight()};
-        double result {mathematicCalc::calculateEscapingVelocity(wishedPlanet == 1 ? constantesNumericas::earthRadius : constantesNumericas::jupiterRadius, objectHeight, wishedPlanet == 1 ? constantesNumericas::earthMass : constantesNumericas::jupiterMass)};
-        
+        double result{mathematicCalc::calculateEscapingVelocity(planet, object)};
+
         dialogs::showResult(literals::escapeVelocityResult, result, " m/s.\n");
+    }
+
+    void manageCalculateOrbitalSpeed(const bodies::Planet *planet, const bodies::Object *object)
+    {
+        double result{mathematicCalc::calculateOrbitalSpeed(planet, object)};
+
+        dialogs::showResult(literals::orbitalSpeedResult, result, " m/s.\n");
+    }
+    void manageCalculateOrbitalPeriod(const bodies::Planet *planet, const bodies::Object *object)
+    {
+        double result{mathematicCalc::calculateOrbitalPeriod(planet, object)};
+
+        dialogs::showResult(literals::orbitalPeriodResult, result, " s.\n");
     }
 
 }

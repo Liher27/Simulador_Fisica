@@ -1,15 +1,13 @@
-#ifndef HEADER_DIALOGOS
-#define HEADER_DIALOGOS
+#pragma once
 #include <string_view>
-
+#include "bodies.h"
 // Para main
 namespace dialogs
 {
-    int menuDisplay();
+    void menuDisplay(int &opcion);
 
-    int askForPlanet();
-    double askForHeight();
-    double askForObjectMass();
+    void askUserForPlanet(bodies::Planet &planet);
+    void askUserForObject(bodies::Object &object);
 
     void showResult(std::string_view textResult, double resultNumber, std::string_view unit);
 
@@ -25,6 +23,8 @@ namespace literals
     constexpr int opcionDosInt{2};
     constexpr int opcionTresInt{3};
     constexpr int opcionCuatroInt{4};
+    constexpr int opcionCincoInt{5};
+    constexpr int opcionSeisInt{6};
 
     constexpr std::string_view appTitleSV{"=== MODELO DE FISICA SIMPLE ==="};
 
@@ -49,8 +49,8 @@ namespace literals
     constexpr std::string_view gravitationalForceResult{"La fuerza gravitacional es de: "};
     constexpr std::string_view gravitationalAccelerationResult{"La aceleracion gravitatoria es de: "};
     constexpr std::string_view escapeVelocityResult{"La velocidad de escape es de: "};
+    constexpr std::string_view orbitalSpeedResult{"La velocidad de órbita es de: "};
+    constexpr std::string_view orbitalPeriodResult{"El periodo de órbita es de: "};
     constexpr std::string_view invalidValue{"El valor introducido no es válido. Inténtalo de nuevo.\n"};
 
 }
-
-#endif

@@ -1,32 +1,88 @@
 #include "dialogos.h"
-#include "calculos.h"
 #include "manager.h"
 #include <iostream>
-/*
-    En este proyecto se van a estudiar las practicas de los punteros.
-*/
+
 int main()
 {
-    int wishedPlanet{dialogs::askForPlanet()};
+    // int wishedPlanet{dialogs::askForPlanet()};
+    bool bucle{true};
+    int opcion{};
 
-    while (true)
+    bodies::Planet planet{};
+    bodies::Object object{};
+
+    /*
+        sobrecarga del operador << para mostrar structs
+        std::ostream& operator<<(std::ostream& out, const Employee& e)
+        {
+            out << e.id << ' ' << e.age << ' ' << e.wage;
+            return out;
+        }
+    */
+
+    while (bucle)
     {
-        int opcion = dialogs::menuDisplay();
 
-        if (opcion == literals::opcionUnoInt)
+        dialogs::menuDisplay(opcion);
+
+        switch (opcion)
         {
-            manager::manageCalculateGravitationalForce(wishedPlanet);
-        }
-        else if (opcion == literals::opcionDosInt)
+        case literals::opcionUnoInt:
         {
-            manager::manageCalculateGravitationalAcceleration(wishedPlanet);
-        }
-        else if (opcion == literals::opcionTresInt)
-        {
-            manager::manageCalculateEscapingVelocity(wishedPlanet);
-        }
-        else if (opcion == literals::opcionCuatroInt)
+            dialogs::askUserForPlanet(planet);
+            dialogs::askUserForObject(object);
+
+            manager::manageCalculateGravitationalForce(&planet, &object);
             break;
+        }
+
+        case literals::opcionDosInt:
+        {
+            dialogs::askUserForPlanet(planet);
+            dialogs::askUserForObject(object);
+
+            manager::manageCalculateGravitationalAcceleration(&planet, &object);
+
+            break;
+        }
+
+        case literals::opcionTresInt:
+        {
+            dialogs::askUserForPlanet(planet);
+            dialogs::askUserForObject(object);
+
+            manager::manageCalculateEscapingVelocity(&planet, &object);
+
+            break;
+        }
+
+        case literals::opcionCuatroInt:
+        {
+            dialogs::askUserForPlanet(planet);
+            dialogs::askUserForObject(object);
+
+            manager::manageCalculateOrbitalSpeed(&planet, &object);
+
+            break;
+        }
+        case literals::opcionCincoInt:
+        {
+            dialogs::askUserForPlanet(planet);
+            dialogs::askUserForObject(object);
+
+            manager::manageCalculateOrbitalPeriod(&planet, &object);
+
+            break;
+        }
+        case literals::opcionSeisInt:
+        {
+            bucle = false;
+            break;
+        }
+        default:
+            std::cout << literals::errorInputSV;
+            break;
+        }
     }
 
     std::cout << literals::goodbyeSV << "\n";
